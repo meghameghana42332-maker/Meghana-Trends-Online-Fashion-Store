@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Python Virtual Environment & Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+
+# Test Reports & Artifacts
+playwright-report/
+test-results/
+*.html
+!index.html
+!admin.html
+reports/
+screenshots/failures/
+
+# OS and IDE Files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
+
+# Powershell wrapper (if any)
+powershell.cmd
+powershell.bat

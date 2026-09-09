@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — B.K. MEGHANA SHOPPING MALL</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <div class="logo-icon" style="width: 38px; height: 38px; font-size: 1.1rem;">M</div>
+        <div>
+          <h2>B.K. MEGHANA</h2>
+          <span>ADMIN PORTAL</span>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li>
+          <a href="#dashboard-overview" class="admin-nav-item active" data-testid="admin-nav-overview">
+            <span>📊</span> Overview
+          </a>
+        </li>
+        <li>
+          <a href="#admin-products-sec" class="admin-nav-item" data-testid="admin-nav-products">
+            <span>👗</span> Product Catalog
+          </a>
+        </li>
+        <li>
+          <a href="#admin-orders-sec" class="admin-nav-item" data-testid="admin-nav-orders">
+            <span>📦</span> Order Management
+          </a>
+        </li>
+        <li>
+          <a href="#admin-coupons-sec" class="admin-nav-item" data-testid="admin-nav-coupons">
+            <span>🎟️</span> Coupons & Deals
+          </a>
+        </li>
+        <li style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+          <a href="index.html" class="admin-nav-item" data-testid="admin-nav-storefront">
+            <span>🛍️</span> Go to Storefront
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Admin Main Content -->
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Live metrics, catalog inventory, order processing, and discount engine.</p>
+        </div>
+        <div>
+          <a href="index.html" class="btn-primary" style="font-size: 0.88rem;">
+            ← Open Shopping Mall
+          </a>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <section class="kpi-grid" id="dashboard-overview">
+        <div class="kpi-card" data-testid="kpi-card-products">
+          <div class="kpi-icon-box">👗</div>
+          <div class="kpi-info">
+            <h4>Total Products</h4>
+            <p id="kpi-total-products">0</p>
+          </div>
+        </div>
+        <div class="kpi-card" data-testid="kpi-card-users">
+          <div class="kpi-icon-box">👥</div>
+          <div class="kpi-info">
+            <h4>Registered Users</h4>
+            <p id="kpi-total-users">0</p>
+          </div>
+        </div>
+        <div class="kpi-card" data-testid="kpi-card-orders">
+          <div class="kpi-icon-box">📦</div>
+          <div class="kpi-info">
+            <h4>Total Orders</h4>
+            <p id="kpi-total-orders">0</p>
+          </div>
+        </div>
+        <div class="kpi-card" data-testid="kpi-card-revenue">
+          <div class="kpi-icon-box">💰</div>
+          <div class="kpi-info">
+            <h4>Total Revenue</h4>
+            <p id="kpi-total-revenue">₹0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Management Section -->
+      <section class="admin-section" id="admin-products-sec">
+        <div class="section-header-row">
+          <h3>👗 Inventory & Catalog Management</h3>
+          <button class="btn-primary" style="font-size: 0.84rem; padding: 8px 18px;" onclick="openModal('add-product-modal')" data-testid="btn-open-add-product">
+            + Add New Product
+          </button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" data-testid="admin-products-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Inventory Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Order Management Section -->
+      <section class="admin-section" id="admin-orders-sec">
+        <div class="section-header-row">
+          <h3>📦 Customer Orders & Status Updates</h3>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" data-testid="admin-orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer & Address</th>
+                <th>Order Date</th>
+                <th>Total Amount</th>
+                <th>Payment Method</th>
+                <th>Update Status</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Coupon Management Section -->
+      <section class="admin-section" id="admin-coupons-sec">
+        <div class="section-header-row">
+          <h3>🎟️ Active Promotional Coupons</h3>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" data-testid="admin-coupons-table">
+            <thead>
+              <tr>
+                <th>Coupon Code</th>
+                <th>Discount Value</th>
+                <th>Minimum Cart Value</th>
+                <th>Promotion Details</th>
+              </tr>
+            </thead>
+            <tbody id="admin-coupons-tbody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="modal-overlay" id="add-product-modal">
+    <div class="modal-container" style="max-width: 550px; padding: 28px;">
+      <button class="modal-close-btn" onclick="closeModal('add-product-modal')">&times;</button>
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 18px;">Add New Product to Catalog</h3>
+      
+      <form id="add-product-form" onsubmit="handleAddProductSubmit(event)">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label>Product Name *</label>
+          <input type="text" id="new-prod-name" class="form-control" required placeholder="e.g. Men's Cotton Check Shirt" data-testid="new-prod-name" />
+        </div>
+        <div class="form-grid" style="margin-bottom: 12px;">
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="new-prod-cat" class="form-control" data-testid="new-prod-cat">
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+              <option value="kids">Kids</option>
+              <option value="gold">Gold Coins</option>
+              <option value="silver">Silver Coins</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Subcategory</label>
+            <input type="text" id="new-prod-subcat" class="form-control" placeholder="e.g. Shirts" data-testid="new-prod-subcat" />
+          </div>
+        </div>
+        <div class="form-grid" style="margin-bottom: 12px;">
+          <div class="form-group">
+            <label>Selling Price (₹) *</label>
+            <input type="number" id="new-prod-price" class="form-control" required placeholder="1499" data-testid="new-prod-price" />
+          </div>
+          <div class="form-group">
+            <label>MRP (Original Price) *</label>
+            <input type="number" id="new-prod-mrp" class="form-control" placeholder="2499" data-testid="new-prod-mrp" />
+          </div>
+        </div>
+        <div class="form-grid" style="margin-bottom: 12px;">
+          <div class="form-group">
+            <label>Discount (%)</label>
+            <input type="number" id="new-prod-discount" class="form-control" placeholder="40" data-testid="new-prod-discount" />
+          </div>
+          <div class="form-group">
+            <label>Stock Quantity</label>
+            <input type="number" id="new-prod-stock" class="form-control" value="25" data-testid="new-prod-stock" />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label>Image URL</label>
+          <input type="url" id="new-prod-img" class="form-control" placeholder="https://images.unsplash.com/..." data-testid="new-prod-img" />
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label>Product Description</label>
+          <textarea id="new-prod-desc" class="form-control" rows="2" placeholder="Brief details about fabric, style, and care."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%;" data-testid="btn-submit-add-product">
+          Save Product to Store
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      Orders.init();
+      Auth.init();
+      Admin.init();
+    });
+
+    function openModal(id) {
+      document.getElementById(id).classList.add("active");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("active");
+    }
+
+    function showToast(msg, type = "info") {
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `<span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function handleAddProductSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("new-prod-name").value;
+      const cat = document.getElementById("new-prod-cat").value;
+      const subcat = document.getElementById("new-prod-subcat").value;
+      const price = document.getElementById("new-prod-price").value;
+      const mrp = document.getElementById("new-prod-mrp").value;
+      const discount = document.getElementById("new-prod-discount").value;
+      const stock = document.getElementById("new-prod-stock").value;
+      const img = document.getElementById("new-prod-img").value;
+      const desc = document.getElementById("new-prod-desc").value;
+
+      Admin.addNewProduct({
+        name,
+        category: cat,
+        subcategory: subcat,
+        price,
+        originalPrice: mrp,
+        discount,
+        stockCount: stock,
+        image: img,
+        description: desc
+      });
+
+      closeModal("add-product-modal");
+      document.getElementById("add-product-form").reset();
+    }
+  </script>
+</body>
+</html>
